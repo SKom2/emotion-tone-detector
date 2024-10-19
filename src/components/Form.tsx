@@ -1,6 +1,11 @@
 import axios from "axios";
 import {FormEvent, useState} from "react";
 
+interface EmotionItem {
+    emotion: string;
+    emotion_score: number;
+}
+
 const fetchEmotionToneData = async (text: string) => {
     try {
         const response = await axios.request({
@@ -23,7 +28,7 @@ const fetchEmotionToneData = async (text: string) => {
 
         if (!response) throw new Error("Could not find emotion data!");
 
-        return response.data;
+        return response.data.nlpcloud.items;
     } catch (error) {
         console.error(error);
         return null;
@@ -32,7 +37,7 @@ const fetchEmotionToneData = async (text: string) => {
 
 const Form = () => {
     const [inputValue, setInputValue] = useState('');
-    const [emotions, setEmotions] = useState([]);
+    const [emotions, setEmotions] = useState<EmotionItem[]>([]);
 
     const onSubmit = async (e: FormEvent) => {
         e.preventDefault()

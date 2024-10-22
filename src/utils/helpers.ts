@@ -1,53 +1,36 @@
-import {DoughnutChartData, Emotion, EmotionColor, EmotionDescription, EmotionItem, IEmotion} from "./types.ts";
+import {
+    DoughnutChartData,
+    Emotion,
+    EmotionColor,
+    EmotionDescription,
+    EmotionScores,
+    IEmotion
+} from "./types.ts";
 
-export const mockData = [
-        {
-            emotion: Emotion.Fear,
-            emotion_score: 0.13,
-        },
-        {
-            emotion: Emotion.Anger,
-            emotion_score: 0.008,
-        },
-        {
-            emotion: Emotion.Surprise,
-            emotion_score: 0.022,
-        },
-        {
-            emotion: Emotion.Sadness,
-            emotion_score: 0,
-        },
-        {
-            emotion: Emotion.Joy,
-            emotion_score: 0,
-        },
-        {
-            emotion: Emotion.Love,
-            emotion_score: 0,
-        }
-]
-
-export const transformData = (items: EmotionItem[]): { chartData: DoughnutChartData, dominantEmotion: IEmotion} => {
-    const labels = items.map(item => item.emotion)
-    const data = items.map(item => item.emotion_score)
-    const backgroundColor: EmotionColor[] = items.map(item => getEmotionColor(item.emotion))
+export const transformData = (emotion_scores: EmotionScores): { chartData: DoughnutChartData, dominantEmotion: IEmotion} => {
+    const emotions = Object.keys(emotion_scores).map(
+        (emotion) => emotion.charAt(0).toUpperCase() + emotion.slice(1)
+    ) as Emotion[];
+    const data: number[] = Object.values(emotion_scores)
+    const backgroundColor: EmotionColor[] = emotions.map((label) => getEmotionColor(label))
 
     const chartData = {
-        labels,
+        labels: emotions,
         datasets: [{
             data,
             backgroundColor,
         }]
     }
 
-    const dominantEmotionItem = items.reduce((max, item) => item.emotion_score > max.emotion_score ? item : max)
-    const dominantEmotionIndex = items.indexOf(dominantEmotionItem)
+    const dominantEmotionText = Object.entries(emotion_scores).reduce(
+        (max, item) => item[1] > max[1] ? item : max
+    )[0] as Emotion
+    const dominantEmotionIndex = Object.keys(emotion_scores).indexOf(dominantEmotionText)
     const dominantEmotionColor = backgroundColor[dominantEmotionIndex]
-    const dominantEmotionText = dominantEmotionItem.emotion
     const dominantEmotionDescription = getEmotionDescription(dominantEmotionText)
 
-    const dominantEmotion = {
-        label: dominantEmotionText,
+    const dominantEmotion: IEmotion = {
+        text: dominantEmotionText,
         color: dominantEmotionColor,
         description: dominantEmotionDescription
     }
@@ -70,10 +53,8 @@ export const getEmotionDescription = (emotion: Emotion): EmotionDescription => {
             return EmotionDescription.Sadness;
         case Emotion.Joy:
             return EmotionDescription.Joy;
-        case Emotion.Love:
-            return EmotionDescription.Love;
-        default:
-            return EmotionDescription.Unknown;
+        case Emotion.Disgust:
+            return EmotionDescription.Disgust;
     }
 }
 
@@ -89,7 +70,7 @@ export const getEmotionColor = (emotion: Emotion): EmotionColor => {
             return EmotionColor.Sadness;
         case Emotion.Joy:
             return EmotionColor.Joy;
-        case Emotion.Love:
-            return EmotionColor.Love;
+        case Emotion.Disgust:
+            return EmotionColor.Disgust;
     }
 }

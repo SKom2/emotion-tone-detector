@@ -40,7 +40,7 @@ function App() {
                        textShadow: 'rgb(255 255 255) 1px 1px 0',
                    }}
                 >
-                    {emotion?.label}
+                    {emotion?.text}
                 </p>
                 <p className="text-lg text-white font-sans mt-2">
                     {emotion?.description}

@@ -4,9 +4,10 @@ import Button from "../ui/Button.tsx";
 
 interface FormProps {
     onSubmit: (values: string) => void;
+    isLoading: boolean;
 }
 
-const Form: FC<FormProps> = ({ onSubmit }) => {
+const Form: FC<FormProps> = ({ onSubmit, isLoading }) => {
     const [inputValue, setInputValue] = useState('');
 
     const handleOnSubmit = (e: FormEvent) => {
@@ -17,10 +18,10 @@ const Form: FC<FormProps> = ({ onSubmit }) => {
     return (
         <form
             onSubmit={handleOnSubmit}
-            className="flex flex-col justify-center items-center gap-6 p-8 bg-white shadow-lg rounded-xl"
+            className="flex max-w-[800px] m-auto flex-col justify-center items-center gap-6 p-8 bg-white shadow-lg rounded-xl"
         >
             <Input inputValue={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
-            <Button/>
+            <Button isLoading={isLoading} />
         </form>
     );
 };

@@ -27,7 +27,7 @@ export const transformData = (emotion_scores: EmotionScores): { chartData: Dough
     )[0] as Emotion
     const dominantEmotionIndex = Object.keys(emotion_scores).indexOf(dominantEmotionText)
     const dominantEmotionColor = backgroundColor[dominantEmotionIndex]
-    const dominantEmotionDescription = getEmotionDescription(dominantEmotionText)
+    const dominantEmotionDescription = getEmotionDescription((dominantEmotionText.charAt(0).toUpperCase() + dominantEmotionText.slice(1)) as Emotion)
 
     const dominantEmotion: IEmotion = {
         text: dominantEmotionText,

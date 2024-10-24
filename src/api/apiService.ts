@@ -11,7 +11,7 @@ export const apiService = {
                     text
                 },
                 headers: {
-                    'x-rapidapi-key': 'd88105f006mshac3491b4f856344p1b9d8ejsn2bc312e8caf1',
+                    'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY || "",
                     'x-rapidapi-host': 'twinword-emotion-analysis-v1.p.rapidapi.com'
                 }
             });

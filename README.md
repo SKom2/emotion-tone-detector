@@ -62,3 +62,7 @@ After obtaining your API key, follow these steps to set it up in your project:
 
 1. Create a `.env` file in the root of the project:
 2. VITE_RAPID_API_KEY=d88105f006mshac3491b4f856344p1b9d8ejsn2bc312e8caf1 (You can use mine if you don't want to sign up)
+
+### Demo
+
+Live demo of application [here](https://amazing-chimera-abfdb6.netlify.app/)

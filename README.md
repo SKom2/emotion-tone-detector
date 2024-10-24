@@ -1,50 +1,64 @@
-# React + TypeScript + Vite
+# JetBrains Internship 2024
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Visualization of survey data
 
-Currently, two official plugins are available:
+### Test Task: Detecting Emotional Tone of Text Using AI API
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Timer Component](https://github.com/SKom2/kotlin-js-text-editor/assets/103752057/bcfd650a-ca87-4e7c-b52d-533e6a20f982)
 
-## Expanding the ESLint configuration
+### Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+A simple web application that detects the emotional tone of user-entered text using an AI API via RapidAPI.
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Tone Detection**: The app processes the input text using an AI service from RapidAPI to detect various emotional tones.
+- **Emotional Tone Display**: The results are presented in two ways:
+  1. **Most Expressed Emotion**: The emotion with the highest score is displayed on the screen along with a brief description.
+  2. **Doughnut Chart Visualization**: Using the Chart.js library, a doughnut chart is rendered, showing all detected emotions with their corresponding scores for a visual overview.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Technologies Used
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **React**
+- **Vite**
+- **TypeScript**
+- **Tailwind CSS**
+- **Chart.js**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Getting Started
+
+To run the project locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SKom2/emotion-tone-detector.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd emotion-tone-detector
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+4. Start the development server:
+    ```bash
+   npm run dev
+    # or
+    yarn dev
+   ```
+
+### API Key Setup
+
+To use the tone detection service, you will need to obtain an API key from RapidAPI.
+
+1. Visit [RapidAPI](https://rapidapi.com/) and sign up for an account if you don't have one.
+2. Search for an emotional tone detection API and subscribe to it.
+3. Once subscribed, navigate to the API dashboard to find your API key.
+
+After obtaining your API key, follow these steps to set it up in your project:
+
+1. Create a `.env` file in the root of the project:
+2. RAPID_API_KEY=d88105f006mshac3491b4f856344p1b9d8ejsn2bc312e8caf1 (You can use mine if you don't want to sign up)

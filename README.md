@@ -61,4 +61,4 @@ To use the tone detection service, you will need to obtain an API key from Rapid
 After obtaining your API key, follow these steps to set it up in your project:
 
 1. Create a `.env` file in the root of the project:
-2. RAPID_API_KEY=d88105f006mshac3491b4f856344p1b9d8ejsn2bc312e8caf1 (You can use mine if you don't want to sign up)
+2. VITE_RAPID_API_KEY=d88105f006mshac3491b4f856344p1b9d8ejsn2bc312e8caf1 (You can use mine if you don't want to sign up)

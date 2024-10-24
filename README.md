@@ -4,7 +4,7 @@
 
 ### Test Task: Detecting Emotional Tone of Text Using AI API
 
-(https://github.com/SKom2/kotlin-js-text-editor/assets/103752057/bcfd650a-ca87-4e7c-b52d-533e6a20f982)
+![](https://github.com/SKom2/kotlin-js-text-editor/assets/103752057/bcfd650a-ca87-4e7c-b52d-533e6a20f982)
 
 ### Overview
 
